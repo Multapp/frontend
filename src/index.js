@@ -23,7 +23,7 @@ import vehiculosReducer from "./containers/Vehiculos/reducer";
 import agregarMarcaReducer from "./containers/AgregarMarca/reducer";
 import eliminarMarcaReducer from "./containers/EliminarMarca/reducer";
 
-Axios.defaults.baseURL = "http://localhost:8000/api"; // esto es para usar la misma url en todas las peticiones http sin tener que andar escribiendo
+Axios.defaults.baseURL = "https://multa-app.herokuapp.com/api"; // esto es para usar la misma url en todas las peticiones http sin tener que andar escribiendo
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
