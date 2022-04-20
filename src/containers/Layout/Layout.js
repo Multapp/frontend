@@ -10,6 +10,7 @@ import Usuarios from "../Usuarios";
 import Usuario from "../Usuario";
 import InspectorLogueado from "../../components/InspectorLogueado/InspectorLogueado";
 import Vehiculos from "../Vehiculos";
+import Infracciones from "../Infracciones";
 import { useSelector } from "react-redux";
 
 const Layout = () => {
@@ -32,6 +33,7 @@ const Layout = () => {
           <Route path="/usuarios/:id" exact={true} component={Usuario} />
           <Route path="/usuarios" exact={true} component={Usuarios} />
           <Route path="/vehiculos" exact={true} component={Vehiculos} />
+          <Route path="/infracciones" exact={true} component={Infracciones} />
           <Redirect from="/" to="/usuarios" />
         </Switch>
       );

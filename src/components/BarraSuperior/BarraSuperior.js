@@ -50,6 +50,12 @@ const BarraSuperior = () => {
     history.push("/vehiculos");
   };
 
+  // metodo que te manda a la pagina para administrar infracciones
+  const infraccionesHandler = () => {
+    cerrarMenuHandler();
+    history.push("/infracciones");
+  };
+
   // metodo para cerrar sesion
   const cerrarSesionHandler = () => {
     cerrarMenuHandler();
@@ -70,6 +76,7 @@ const BarraSuperior = () => {
           {rol === "Supervisor" && <MenuItem onClick={multasHandler}>Administrar multas</MenuItem>}
           {rol === "Administrador" && <MenuItem onClick={usuariosHandler}>Administrar usuarios</MenuItem>}
           {rol === "Administrador" && <MenuItem onClick={vehiculosHandler}>Administrar vehículos</MenuItem>}
+          {rol === "Administrador" && <MenuItem onClick={infraccionesHandler}>Administrar infracciones</MenuItem>}
           {rol !== "Inspector" && <MenuItem onClick={perfilHandler}>Mi perfil</MenuItem>}
           <MenuItem onClick={cerrarSesionHandler}>Cerrar sesión</MenuItem>
         </Menu>

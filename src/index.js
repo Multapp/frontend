@@ -22,8 +22,11 @@ import usuarioReducer from "./containers/Usuario/reducer";
 import vehiculosReducer from "./containers/Vehiculos/reducer";
 import agregarMarcaReducer from "./containers/AgregarMarca/reducer";
 import eliminarMarcaReducer from "./containers/EliminarMarca/reducer";
+import infraccionesReducer from "./containers/Infracciones/reducer";
+import agregarInfraccionReducer from "./containers/AgregarInfraccion/reducer";
+import eliminarInfraccionReducer from "./containers/EliminarInfraccion/reducer";
 
-Axios.defaults.baseURL = "https://multa-app.herokuapp.com/api"; // esto es para usar la misma url en todas las peticiones http sin tener que andar escribiendo
+Axios.defaults.baseURL = "http://localhost:8080/api"; // esto es para usar la misma url en todas las peticiones http sin tener que andar escribiendo
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -43,6 +46,9 @@ const reducers = combineReducers({
     vehiculos: vehiculosReducer,
     agregarMarca: agregarMarcaReducer,
     eliminarMarca: eliminarMarcaReducer,
+    infracciones: infraccionesReducer,
+    agregarInfraccion: agregarInfraccionReducer,
+    eliminarInfraccion: eliminarInfraccionReducer,
 });
 
 const store = createStore(reducers, composeEnhancers(applyMiddleware(thunk)));
