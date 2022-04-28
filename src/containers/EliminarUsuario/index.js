@@ -12,18 +12,17 @@ const EliminarUsuario = props => {
     return (
         <Dialog open={props.open} onClose={props.onClose}>
             <DialogTitle>
-                Eliminar usuario
+            {props.eliminar ? "Eliminar usuario": "Reactivar usuario "}
             </DialogTitle>
             <DialogContent>
                 <DialogContentText>
-                    ¿Está seguro de que desea eliminar a {props.nombre}?
-                    Esta acción no se puede deshacer.
+                    ¿Está seguro de que desea {props.eliminar ? "eliminar": "reactivar"} a {props.nombre}?
                 </DialogContentText>
             </DialogContent>
             <DialogActions>
                 <Button onClick={props.onClose}>Cancelar</Button>
-                <Button color="primary" disabled={props.cargando} onClick={() => props.eliminarUsuario(props.id)}>
-                    Eliminar
+                <Button color="primary" disabled={props.cargando} onClick={() => props.eliminarUsuario(props.id, props.eliminar)}>
+                    {props.eliminar ? "Eliminar": "Reactivar"} 
                     {props.cargando && <CircularProgress size={24} className={estilos.buttonProgress} />}
                 </Button>
             </DialogActions>
@@ -45,7 +44,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        eliminarUsuario: (id) => {dispatch(eliminarUsuario(id))},
+        eliminarUsuario: (id, eliminar) => {dispatch(eliminarUsuario(id, eliminar))},
     }
 }
 

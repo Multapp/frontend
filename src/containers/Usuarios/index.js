@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { Box, Container, Typography, Tabs, Tab, CircularProgress, List, ListItem, Divider, ListItemAvatar, Avatar, ListItemText, Fab, ListItemSecondaryAction, IconButton, createMuiTheme, Tooltip } from "@material-ui/core";
-import { Add, Delete } from "@material-ui/icons";
+import { Add, ToggleOff, ToggleOn } from "@material-ui/icons";
 import EditarUsuario from "../EditarUsuario";
 import EliminarUsuario from "../EliminarUsuario";
 import { withRouter } from "react-router";
@@ -13,6 +13,7 @@ import { abrirDialogEditar, cerrarDialogEditar } from "../EditarUsuario/actions"
 
 class Usuarios extends Component {
     state = {
+        eliminar: false,
         pestanaActual: 0,
     }
 
@@ -43,10 +44,11 @@ class Usuarios extends Component {
 
     // metodo para cambiar de pestañas
     tabChangeHandler = (event, newValue) => {
-        this.setState({pestanaActual: newValue});
+        this.setState({...this.state, pestanaActual: newValue});
     }
 
-    deleteUserHandler = (id, nombre) => {
+    deleteUserHandler = (id, nombre, eliminar) => {
+        this.setState({...this.state, eliminar: eliminar});
         this.props.setUsuarioAEliminar(id, nombre);
         this.props.abrirDialogEliminar();
     }
@@ -65,11 +67,20 @@ class Usuarios extends Component {
                     primary={user.nombre}
                     secondary={user.email}
                 />
-                <ListItemSecondaryAction>
-                    <IconButton onClick={() => this.deleteUserHandler(user.id, user.nombre)}>
-                        <Delete />
-                    </IconButton>
-                </ListItemSecondaryAction>
+                { (!!user.desactivado) &&
+                    <ListItemSecondaryAction>
+                        <IconButton onClick={() => this.deleteUserHandler(user.id, user.nombre, false)}>
+                            <ToggleOff/>
+                        </IconButton>
+                    </ListItemSecondaryAction>
+                }                
+                { (!user.desactivado) &&
+                    <ListItemSecondaryAction>
+                        <IconButton onClick={() => this.deleteUserHandler(user.id, user.nombre, true)}>
+                            <ToggleOn color="primary"/>
+                        </IconButton>
+                    </ListItemSecondaryAction>
+                }
             </ListItem>
             <Divider />
         </>
@@ -145,6 +156,7 @@ class Usuarios extends Component {
                 <EliminarUsuario
                     open={this.props.mostrarDialogEliminar}
                     onClose={this.props.cerrarDialogEliminar}
+                    eliminar={this.state.eliminar}
                 />
                 <Notifier />
             </Fragment>
@@ -166,7 +178,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => { 
     return {
         cargarUsuarios: () => {dispatch(cargarUsuarios())},
-        setUsuarioAEliminar: (id, nombre) => {dispatch(setUsuarioAEliminar(id, nombre))},
+        setUsuarioAEliminar: (id, nombre, eliminar) => {dispatch(setUsuarioAEliminar(id, nombre, eliminar))},
         abrirDialogEditar: () => {dispatch(abrirDialogEditar())},
         cerrarDialogEditar: () => {dispatch(cerrarDialogEditar())},
         abrirDialogEliminar: () => {dispatch(abrirDialogEliminar())},

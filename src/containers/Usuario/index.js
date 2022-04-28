@@ -34,6 +34,9 @@ class Usuario extends Component {
                                     {this.props.usuario.displayName}
                                 </Typography>
                                 <Typography variant="h4">{this.props.usuario.rol}</Typography>
+                                {!!this.props.usuario.desactivado && 
+                                    <Typography variant="h6" color="error">Desactivado</Typography>
+                                }
                             </Grid>
                             <Grid item={true} xs={6}>
                                 <List>

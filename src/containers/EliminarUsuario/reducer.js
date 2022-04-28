@@ -2,6 +2,7 @@ import * as actionTypes from "../../share/actionTypes";
 
 const initialState = {
     mostrarDialog: false,
+    eliminar: false,
     id: "",
     nombre: "",
     cargando: false,
@@ -33,6 +34,7 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 id: action.id,
                 nombre: action.nombre,
+                eliminar: action.eliminar,
             };
         case actionTypes.ELIMINAR_USUARIO_START:
             return {
