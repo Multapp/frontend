@@ -60,7 +60,7 @@ export const agregarInfraccion = (ley, articulo, inciso, extracto, codigo,
         Axios.post("/addInfraccion", data, headers)
             .then(() => {
                 dispatch(agregarInfraccionConExito());
-                dispatch(enqueueSnackbar({message: "Infraccion creada exitosamente", options: {variant: "success"}}));
+                dispatch(enqueueSnackbar({message: "Infraccion creada correctamente", options: {variant: "success"}}));
                 dispatch(cargarInfracciones());
                 dispatch(cerrarDialogAgregarInfraccion());
             }).catch(error => {

@@ -50,7 +50,7 @@ export const eliminarInfraccion = id => {
         Axios.delete("/deleteInfraccion", data)
             .then(() => {
                 dispatch(eliminarInfraccionConExito());
-                dispatch(enqueueSnackbar({message: "Infraccion eliminada exitosamente", options: {variant: "success"}}));
+                dispatch(enqueueSnackbar({message: "Infraccion eliminada correctamente", options: {variant: "success"}}));
                 dispatch(cargarInfracciones());
                 dispatch(cerrarDialogEliminarInfraccion());
             }).catch(error => {

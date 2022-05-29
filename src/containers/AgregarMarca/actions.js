@@ -49,7 +49,7 @@ export const agregarMarca = (marca, modelos) => {
         Axios.post("/addVehiculo", data, headers)
             .then(() => {
                 dispatch(agregarMarcaConExito());
-                dispatch(enqueueSnackbar({message: "Marca creada exitosamente", options: {variant: "success"}}));
+                dispatch(enqueueSnackbar({message: "Marca creada correctamente", options: {variant: "success"}}));
                 dispatch(cargarVehiculos());
                 dispatch(cerrarDialogAgregarMarca());
             }).catch(error => {
