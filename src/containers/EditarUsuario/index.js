@@ -71,6 +71,8 @@ const EditarUsuario = props => {
         if (
             rol.trim() !== "" &&
             dni.trim() !== "" &&
+            dni.length >= 8 &&
+            (dni % 1 == 0) &&
             apellido.trim() !== "" &&
             nombre.trim() !== "" &&
             fechaNacimiento.trim() !== "" &&
@@ -162,7 +164,7 @@ const EditarUsuario = props => {
                                     id="dni"
                                     type="number"
                                     label="DNI"
-                                    inputProps={{ min: 10000000 }}
+                                    inputProps={{ minLength: 8 }}
                                     required
                                     value={dni}
                                     onChange={event => setDni(event.target.value)}
