@@ -62,6 +62,7 @@ export const recuperarContrasena = (email) => {
         const data = {
             email: email,
             returnSecureToken: true,
+            rol: "Otro"
         }
         const headers = {
             "content-type": "application/json",
