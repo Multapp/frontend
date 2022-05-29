@@ -60,7 +60,7 @@ export const editarInfraccion = (id, data) => {
         Axios.post("/editInfraccion", infraccion, headers)
             .then(response => {
                 dispatch(editarInfraccionConExito(response.data));
-                dispatch(enqueueSnackbar({message: "Infraccion actualizado exitosamente", options: {variant: "success"}}));
+                dispatch(enqueueSnackbar({message: "Infraccion actualizada correctamente", options: {variant: "success"}}));
                 dispatch(cargarInfracciones());
             }).catch(error => {
                 dispatch(editarInfraccionConError(error));

@@ -59,7 +59,7 @@ export const editarVehiculo = (id, data) => {
         Axios.post("/editVehiculo", vehiculo, headers)
             .then(response => {
                 dispatch(editarVehiculoConExito(response.data));
-                dispatch(enqueueSnackbar({message: "Vehículo actualizado exitosamente", options: {variant: "success"}}));
+                dispatch(enqueueSnackbar({message: "Vehículo actualizado correctamente", options: {variant: "success"}}));
                 dispatch(cargarVehiculos());
             }).catch(error => {
                 dispatch(editarVehiculoConError(error));
